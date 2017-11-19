@@ -7,9 +7,11 @@ import registerServiceWorker from './registerServiceWorker'
 ReactDOM.render(<App />, document.getElementById('root'))
 registerServiceWorker()
 
-// async function init() {
-//   const wasm = require('./main.rs')
-//   const module = await wasm.initialize({ noExitRuntime: true })
-// }
-//
-// init()
+function init() {
+  const wasm = require('./main.rs')
+  wasm.initialize({ noExitRuntime: true }).then(Module => {
+    console.log('Module', Module)
+  })
+}
+
+init()
